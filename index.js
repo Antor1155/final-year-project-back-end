@@ -28,7 +28,7 @@ async function run() {
 
 
 
-    //api for getting all data
+    ////api for getting all data
     app.get('/attendence', async (req, res) => {
       const query = {};
       const cursor = attendenceCollection.find(query);
@@ -38,7 +38,7 @@ async function run() {
       res.send(products);
     });
 
-    // api for getting all users
+    //// api for getting all users
     app.get('/users', async (req, res) => {
       const query = {};
       const cursor = userCollection.find(query);
@@ -67,11 +67,11 @@ async function run() {
     })
 
 
-    // api for deleting one item 
-    app.delete("/deleteItem/:id", async (req, res) => {
+    ///// api for deleting one item 
+    app.delete("/deleteUser/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: ObjectId(id) };
-      const result = await attendenceCollection.deleteOne(query);
+      const result = await userCollection.deleteOne(query);
       res.send(result);
     })
 
