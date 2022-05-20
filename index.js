@@ -28,7 +28,7 @@ async function run() {
 
 
 
-    ////api for getting all data
+    ////api for getting all attendence
     app.get('/attendence', async (req, res) => {
       const query = {};
       const cursor = attendenceCollection.find(query);
@@ -51,22 +51,6 @@ async function run() {
    
 
 
-    // api for updating one item 
-    app.put('/singleItem/:id', async (req, res) => {
-      const id = req.params.id;
-      const updatedItem = req.body;
-
-      const filter = { _id: ObjectId(id) };
-      const option = { upsert: true };
-
-      const updatedDoc = {
-        $set: updatedItem
-      }
-      const result = await attendenceCollection.updateOne(filter, updatedDoc, option);
-      res.send(result);
-    })
-
-
     ///// api for deleting one item 
     app.delete("/deleteUser/:id", async (req, res) => {
       const id = req.params.id;
@@ -75,7 +59,7 @@ async function run() {
       res.send(result);
     })
 
-    ////*****//api for adding one item
+    //////api for adding one item
     app.post("/addUser", async (req, res) => {
       const doc = req.body;
       const result = await userCollection.insertOne(doc);
